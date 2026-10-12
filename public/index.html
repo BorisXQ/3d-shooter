@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#15191c"><title>RIFT//ZERO — Tactical FPS</title>
+  <link rel="stylesheet" href="/style.css?v=20">
+  <script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>
+</head>
+<body>
+  <div id="menu" class="overlay">
+    <div class="brand">RIFT<span>//</span>ZERO</div><div class="eyebrow">TACTICAL COMBAT PROTOTYPE · BUILD 0.1</div>
+    <h1>Контроль территории.<br><em>Контроль времени.</em></h1>
+    <p class="intro">Компактная индустриальная арена. Никакого лишнего шума — только позиция, реакция и способности.</p>
+    <div class="dashboard"><div class="dash-head"><span>OPERATOR DASHBOARD</span><small>DEMO PROFILE</small></div><div class="dash-grid"><div><small>РАНГ</small><strong>RECRUIT</strong></div><div><small>УРОВЕНЬ</small><strong>01</strong></div><div><small>ОПЫТ</small><strong>120 XP</strong></div><div><small>РЕЖИМ</small><strong>1V1 / BOT</strong></div></div></div>
+    <label>Позывной<input id="callsign" maxlength="18" value="Operative-01"></label>
+    <div class="actions"><button id="onlineBtn" class="primary">НАЙТИ СЛУЧАЙНОГО СОПЕРНИКА</button><button id="friendBtn">ИГРАТЬ С ДРУГОМ</button><button id="botBtn">ТРЕНИРОВКА С БОТОМ</button></div>
+    <div id="friendRoomPanel" class="friend-room hidden"><label>Код комнаты <small>одинаковый у обоих друзей</small><input id="roomCode" maxlength="12" value="RIFT-01" autocomplete="off"></label><button id="friendJoinBtn" class="primary">СОЗДАТЬ / ВОЙТИ В КОМНАТУ</button></div>
+    <div id="menuStatus" class="status">Ожидание запуска</div>
+    <div class="controls-note">WASD — движение · мышь — обзор · удерживать ЛКМ — автоматическая очередь · ПКМ — прицеливание · R — перезарядка · SPACE — прыжок · 1/2 — оружие · SHIFT — рывок · Q — замедление времени · ESC — меню</div>
+  </div>
+  <div id="game" class="hidden">
+    <canvas id="view"></canvas>
+    <div class="hud-top"><div><span class="hud-label">АРЕНА</span><strong>SECTOR 04 / FOUNDRY</strong></div><div class="center-tag">RIFT<span>//</span>ZERO <small class="round-pill">РАУНД <b id="roundNumber">1</b> / <b id="maxRounds">10</b></small></div><div class="right"><span class="hud-label">КОМНАТА · ДО КОНЦА РАУНДА</span><strong><span id="roomLabel">—</span> · <span id="roundTimer">03:00</span></strong></div></div>
+    <div class="match-strip" aria-label="Счёт матча"><div class="team-side"><span class="team-mark team-blue"></span><div><small id="teamOneName">ОПЕРАТИВНИК 1</small><strong id="topScoreOne">0</strong></div></div><div class="match-center"><span>СЧЁТ РАУНДОВ</span><strong id="topMatchScore">0 <i>—</i> 0</strong><small>РАУНД <b id="topRound">1</b> / 10</small></div><div class="team-side team-right"><div><small id="teamTwoName">ОПЕРАТИВНИК 2</small><strong id="topScoreTwo">0</strong></div><span class="team-mark team-orange"></span></div><div class="strip-timer"><small>ДО КОНЦА</small><strong id="topTimer">ОЖИДАНИЕ</strong></div></div>
+    <div class="crosshair" id="crosshair"><i></i><b></b></div><div class="weapon-tag" id="weaponTag">CARBINE · 1</div><div class="minimap-wrap"><div class="minimap-title">TACTICAL MAP <span>3 МАРШРУТА · MID / FLANK / HIGH</span></div><canvas id="minimap" width="220" height="220" aria-label="Миникарта арены"></canvas><div class="map-legend"><i class="map-you"></i> ТЫ <span>· ВРАГИ НЕ ОТОБРАЖАЮТСЯ</span></div></div>
+    <div class="hud-bottom"><div class="stat"><span class="hud-label">ЗДОРОВЬЕ</span><strong id="health">100</strong><div class="bar"><i id="healthBar"></i></div></div><div class="ability" id="slowAbility"><span class="key">Q</span><div><strong>TIME SHIFT</strong><small id="slowText">ГОТОВО</small></div></div><div class="ability"><span class="key">SPACE</span><div><strong>JUMP</strong><small>ПРЫЖОК</small></div></div><div class="ability"><span class="key">1 / 2</span><div><strong>WEAPON</strong><small>СМЕНА ОРУЖИЯ</small></div></div><div class="ability"><span class="key">SHIFT</span><div><strong>DASH</strong><small>РЫВОК</small></div></div><div class="stat right"><span class="hud-label">УСТРАНЕНИЯ</span><strong id="score">0</strong><small class="score-sub">СМЕРТИ: <b id="deaths">0</b></small></div><div class="stat right match-score"><span class="hud-label">СЧЁТ МАТЧА</span><strong id="matchScore">0 — 0</strong><small class="score-sub">ОЧКИ: <b id="points">0</b> · РАУНДЫ: <b id="roundWins">0</b></small></div></div>
+    <div id="toast" class="toast">Щёлкни по арене, чтобы захватить мышь</div><div id="pause" class="pause hidden"><h2>ПАУЗА</h2><p>Нажми ESC, чтобы продолжить</p><button id="leaveBtn">ВЫЙТИ В МЕНЮ</button></div>
+    <div class="mini-note">PROTOTYPE · попадания и синхронизация требуют сетевого тестирования</div>
+  </div>
+  <script type="module" src="/client.js?v=20"></script>
+</body></html>
